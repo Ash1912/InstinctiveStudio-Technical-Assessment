@@ -1,14 +1,8 @@
-import React from "react";
-import Header from "../components/Header";
-import StudentList from "../components/StudentList";
+import React from 'react';
+import IndexPage from '../pages/index';
 
-const App: React.FC = () => (
-  <div>
-    <Header />
-    <main className="p-4">
-      <StudentList />
-    </main>
-  </div>
-);
+const App: React.FC = () => {
+  return <IndexPage />;
+};
 
 export default App;

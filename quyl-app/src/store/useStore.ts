@@ -1,26 +1,23 @@
-import create from "zustand";
+import { create } from 'zustand';
 
 interface Student {
   id: string;
   name: string;
   cohort: string;
-  courses: string[];
-  dateJoined: string;
-  lastLogin: string;
-  status: boolean;
+  status: string;
 }
 
 interface Store {
   students: Student[];
-  fetchStudents: () => void;
+  fetchStudents: () => Promise<void>;
 }
 
 const useStore = create<Store>((set) => ({
   students: [],
   fetchStudents: async () => {
     const response = await fetch("/api/students");
-    const data = await response.json();
-    set({ students: data });
+    const students = await response.json();
+    set({ students });
   },
 }));
 
